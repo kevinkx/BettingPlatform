@@ -9,6 +9,8 @@
 
     <EditText
         android:id="@+id/fullname"
+
+        android:textColor="#000000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -23,6 +25,8 @@
 
     <EditText
         android:id="@+id/username"
+
+        android:textColor="#000000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/fullname"
@@ -38,6 +42,7 @@
 
     <EditText
         android:id="@+id/email"
+        android:textColor="#000000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/username"
@@ -53,6 +58,7 @@
 
     <EditText
         android:id="@+id/password"
+        android:textColor="#000000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/email"
@@ -68,6 +74,7 @@
 
     <EditText
         android:id="@+id/cpassword"
+        android:textColor="#000000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/password"
@@ -84,6 +91,8 @@
     <Button
         android:id="@+id/register"
 
+        android:background="#000000"
+        android:textColor="#FFFFFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cpassword"
@@ -93,6 +102,7 @@
 
     <TextView
         android:id="@+id/textView"
+        android:textColor="#000000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/fullname"
@@ -105,6 +115,7 @@
 
     <TextView
         android:id="@+id/textView2"
+        android:textColor="#000000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/username"
@@ -118,6 +129,7 @@
 
     <TextView
         android:id="@+id/textView3"
+        android:textColor="#000000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/email"
@@ -129,6 +141,7 @@
         android:text="Email:" />
     <TextView
         android:id="@+id/textView4"
+        android:textColor="#000000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/password"
@@ -140,6 +153,7 @@
         android:text="Password:" />
     <TextView
         android:id="@+id/textView5"
+        android:textColor="#000000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/cpassword"
