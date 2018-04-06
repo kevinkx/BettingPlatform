@@ -38,6 +38,6 @@
         android:layout_below="@+id/btnLogout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="156dp"
-        android:text="Button" />
+        android:text="TOP UP" />
 
 </RelativeLayout>
