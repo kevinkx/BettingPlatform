@@ -5,25 +5,25 @@ package com.rpll.okeoke.bettingplatform.Model;
  */
 
 public class User {
-    String email, fullname, password;
+    String username, fullname, password;
     int point;
 
     public User() {
     }
 
-    public User(String email, String fullname, String password, int point) {
-        this.email = email;
+    public User(String username, String fullname, String password, int point) {
+        this.username = username;
         this.fullname = fullname;
         this.password = password;
         this.point = point;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getFullname() {
