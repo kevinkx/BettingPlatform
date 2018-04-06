@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private Button logout;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference();
+    DatabaseReference myRef2 = database.getReference();
     User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         String email = auth.getCurrentUser().getEmail();
         String encodedEmail = User.encodeUserEmail(email);
 
+        DatabaseReference myRef = database.getReference("Users").child(encodedEmail);
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                  String encodedEmail = User.encodeUserEmail(auth.getCurrentUser().getEmail());
                  user.setPoint(user.getPoint()+100);
-                myRef.child("Users").child(encodedEmail).setValue(user, new DatabaseReference.CompletionListener(){
+                myRef2.child("Users").child(encodedEmail).setValue(user, new DatabaseReference.CompletionListener(){
                     @Override
                     public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                         if(databaseError!=null)
