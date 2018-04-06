@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 int point = dataSnapshot.child("point").getValue(int.class);
                 textView = (TextView) findViewById(R.id.textView1);
                 textView.setText("Fullname: "+fullname+"\n"+"Username: "+username+"\n"+"Password: "+password+"\n"+"Point: "+point+"\n");
-                user = new User(username, fullname, fullname, point);
+                user = new User(username, fullname, password, point);
             }
 
             @Override
