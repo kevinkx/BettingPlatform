@@ -92,7 +92,7 @@
         android:textSize="50dp" />
 
     <Button
-        android:id="@+id/btnRegister"
+        android:id="@+id/btnLogin"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_alignEnd="@+id/password"

@@ -1,8 +1,11 @@
 package com.rpll.okeoke.bettingplatform.View;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -16,13 +19,26 @@ import com.rpll.okeoke.bettingplatform.R;
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private TextView textView;
+    private Button logout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        auth = FirebaseAuth.getInstance();
         String email = auth.getCurrentUser().getEmail();
-                        textView = (TextView) findViewById(R.id.textView1);
-                textView.setText(email);
+        textView = (TextView) findViewById(R.id.textView1);
+        textView.setText(email);
+        logout = (Button) findViewById(R.id.btnLogout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                auth.signOut();
+
+                startActivity(new Intent(MainActivity.this, FirstActivity.class));
+                finish();
+            }
+        });
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();
 //        DatabaseReference myRef = database.getReference("Users");
 //        myRef.addValueEventListener(new ValueEventListener() {
