@@ -50,4 +50,12 @@ public class User {
     public void setPoint(int point) {
         this.point = point;
     }
+
+    public static String encodeUserEmail(String userEmail) {
+        return userEmail.replace(".", ",");
+    }
+
+    public static String decodeUserEmail(String userEmail) {
+        return userEmail.replace(",", ".");
+    }
 }

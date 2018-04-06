@@ -77,6 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
                 //create user
+
                 auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -90,8 +91,9 @@ public class RegisterActivity extends AppCompatActivity {
                                     Toast.makeText(RegisterActivity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
-                                    User user = new User(inputEmail.getText().toString(), inputFullname.getText().toString(), inputPassword.getText().toString(), 0);
-                                    myRef.child("Users").child(inputEmail.getText().toString()).setValue(user, new DatabaseReference.CompletionListener(){
+                                    User user = new User(inputUsername.getText().toString(), inputFullname.getText().toString(), inputPassword.getText().toString(), 0);
+                                    String encodedEmail = User.encodeUserEmail(inputEmail.getText().toString());
+                                    myRef.child("Users").child(encodedEmail).setValue(user, new DatabaseReference.CompletionListener(){
                                         @Override
                                         public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                                             if(databaseError!=null)
