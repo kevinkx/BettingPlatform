@@ -73,7 +73,6 @@ public class ChatActivity extends AppCompatActivity {
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         mRecyclerView.setHasFixedSize(true);
-
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -96,6 +95,8 @@ public class ChatActivity extends AppCompatActivity {
                 }
                 mAdapter = new ChatAdapter(chats);
                 mRecyclerView.setAdapter(mAdapter);
+                int position = (int) totalChat - 1;
+                mRecyclerView.scrollToPosition(position);
             }
 
             @Override
@@ -109,9 +110,7 @@ public class ChatActivity extends AppCompatActivity {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-                String isiChat = inputChat.getText().toString();
+               String isiChat = inputChat.getText().toString();
                 inputChat.setText("");
                 inputChat.clearFocus();
                 if (TextUtils.isEmpty(isiChat)) {
