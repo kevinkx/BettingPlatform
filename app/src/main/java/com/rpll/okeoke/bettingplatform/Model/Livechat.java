@@ -1,24 +1,20 @@
 package com.rpll.okeoke.bettingplatform.Model;
 
-import java.util.Date;
-
 /**
  * Created by Kevin on 3/29/2018.
  */
 
 public class Livechat {
     String username, chat;
-    Date date;
-    User user;
+    String date;
 
     public Livechat() {
     }
 
-    public Livechat(String username, String chat, Date date, User user) {
+    public Livechat(String username, String chat, String date) {
         this.username = username;
         this.chat = chat;
         this.date = date;
-        this.user = user;
     }
 
     public String getUsername() {
@@ -37,19 +33,12 @@ public class Livechat {
         this.chat = chat;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }
