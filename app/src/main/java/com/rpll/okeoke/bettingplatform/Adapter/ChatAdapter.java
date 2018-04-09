@@ -1,6 +1,7 @@
 package com.rpll.okeoke.bettingplatform.Adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     private ArrayList<Livechat> mDataset;
+    private boolean mChat;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -59,6 +61,11 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         holder.txtUsername.setText(mDataset.get(position).getUsername());
         holder.txtChat.setText(mDataset.get(position).getChat());
         holder.txtDate.setText(mDataset.get(position).getDate().toString());
+        if(mDataset.get(position).isMyChat()){
+            holder.txtUsername.setGravity(Gravity.RIGHT);
+            holder.txtChat.setGravity(Gravity.RIGHT);
+            holder.txtDate.setGravity(Gravity.RIGHT);
+        }
 
     }
 

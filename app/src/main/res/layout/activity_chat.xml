@@ -16,6 +16,7 @@
         android:layout_toLeftOf="@+id/btnSend"
         android:layout_toStartOf="@+id/btnSend"
         android:ems="10"
+        android:background="#FFFFFF"
         android:inputType="textPersonName"
         android:hint="Enter something." />
 

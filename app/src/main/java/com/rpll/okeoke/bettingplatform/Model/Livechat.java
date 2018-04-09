@@ -5,24 +5,34 @@ package com.rpll.okeoke.bettingplatform.Model;
  */
 
 public class Livechat {
-    String username, chat;
+    String email, chat, username;
+    boolean myChat;
     String date;
+
+    public boolean isMyChat() {
+        return myChat;
+    }
+
+    public void setMyChat(boolean myChat) {
+        this.myChat = myChat;
+    }
 
     public Livechat() {
     }
 
-    public Livechat(String username, String chat, String date) {
-        this.username = username;
+    public Livechat(String username, String email, String chat, String date) {
+        this.email = email;
         this.chat = chat;
+        this.username = username;
         this.date = date;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getChat() {
@@ -33,6 +43,14 @@ public class Livechat {
         this.chat = chat;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getDate() {
         return date;
     }
@@ -40,5 +58,4 @@ public class Livechat {
     public void setDate(String date) {
         this.date = date;
     }
-
 }

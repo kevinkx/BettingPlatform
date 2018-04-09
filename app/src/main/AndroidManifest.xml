@@ -14,18 +14,21 @@
             android:name=".View.RegisterActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".View.FirstActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".View.LoginActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".View.ChatActivity"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".View.LoadingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

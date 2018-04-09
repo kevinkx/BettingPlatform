@@ -1,6 +1,5 @@
 package com.rpll.okeoke.bettingplatform.View;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,10 +10,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -54,7 +51,7 @@ public class ChatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
         auth = FirebaseAuth.getInstance();
         String email = auth.getCurrentUser().getEmail();
-        String encodedEmail = User.encodeUserEmail(email);
+        final String encodedEmail = User.encodeUserEmail(email);
         myRefUser = database.getReference("Users").child(encodedEmail);
         myRefUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -83,14 +80,21 @@ public class ChatActivity extends AppCompatActivity {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 // specify an adapter (see also next example)
+                boolean myChat = false;
                 totalChat = dataSnapshot.getChildrenCount();
                 chats = new ArrayList<>();
                 Livechat chat;
                 for (int i = 0; i < totalChat; i++) {
                     chat = new Livechat();
+                    myChat = false;
                     chat.setUsername(dataSnapshot.child(Integer.toString(i)).child("username").getValue(String.class));
                     chat.setChat(dataSnapshot.child(Integer.toString(i)).child("chat").getValue(String.class));
                     chat.setDate(dataSnapshot.child(Integer.toString(i)).child("date").getValue(String.class));
+                    if(dataSnapshot.child(Integer.toString(i)).child("email").getValue(String.class).equals(encodedEmail))
+                    {
+                        myChat = true;
+                    }
+                    chat.setMyChat(myChat);
                     chats.add(chat);
                 }
                 mAdapter = new ChatAdapter(chats);
@@ -125,7 +129,7 @@ public class ChatActivity extends AppCompatActivity {
                 // Using DateFormat format method we can create a string
                 // representation of a date with the defined format.
                 String reportDate = df.format(today);
-                Livechat livechat = new Livechat(username, isiChat, reportDate);
+                Livechat livechat = new Livechat(username, encodedEmail,isiChat, reportDate);
                 myRef2.child("Livechat").child(Long.toString(totalChat)).setValue(livechat, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
