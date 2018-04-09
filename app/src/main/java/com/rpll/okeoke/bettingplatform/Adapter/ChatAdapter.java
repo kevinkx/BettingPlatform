@@ -66,6 +66,12 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
             holder.txtChat.setGravity(Gravity.RIGHT);
             holder.txtDate.setGravity(Gravity.RIGHT);
         }
+        else
+        {
+            holder.txtUsername.setGravity(Gravity.LEFT);
+            holder.txtChat.setGravity(Gravity.LEFT);
+            holder.txtDate.setGravity(Gravity.LEFT);
+        }
 
     }
 
