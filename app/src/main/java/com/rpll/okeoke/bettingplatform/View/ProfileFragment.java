@@ -6,12 +6,21 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.rpll.okeoke.bettingplatform.Model.Livechat;
+import com.rpll.okeoke.bettingplatform.Model.User;
 import com.rpll.okeoke.bettingplatform.R;
 
 /**
@@ -50,17 +59,110 @@ public class ProfileFragment extends Fragment {
         ProfileFragment fragment = new ProfileFragment();
         return fragment;
     }
-    private Button btnLivechat;
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
+
+    private FirebaseAuth auth;
+    private TextView textView;
+    FirebaseDatabase database;
+    private Button btnEditProfile;
+    private Button btnTopUp;
+    private Button btnWithdraw;
+    private Button btnReport;
+    private Button btnAbout;
+    private Button btnHelp;
+    private Button btnLivechat;
+    private User user;
+    private int point;
+    private DatabaseReference myRef2;
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        database = FirebaseDatabase.getInstance();
+        auth = FirebaseAuth.getInstance();
+        myRef2 = database.getReference();
+        final String email = auth.getCurrentUser().getEmail();
+        String encodedEmail = User.encodeUserEmail(email);
+        DatabaseReference myRef = database.getReference("Users").child(encodedEmail);
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String fullname = dataSnapshot.child("fullname").getValue(String.class);
+                String username = dataSnapshot.child("username").getValue(String.class);
+                String password = dataSnapshot.child("email").getValue(String.class);
+                point = dataSnapshot.child("point").getValue(int.class);
+                textView = (TextView) getActivity().findViewById(R.id.txtProfile);
+                textView.setText("Fullname: "+fullname+"\n"+"Username: "+username+"\n"+"Email: "+email+"\n"+"Point: "+point+"\n");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("sout", "Failed to read value.", error.toException());
+            }
+        });
+        btnEditProfile = (Button) getActivity().findViewById(R.id.btnEditProfile);
+        btnEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        btnTopUp = (Button) getActivity().findViewById(R.id.btnTopUp);
+        btnTopUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String encodedEmail = User.encodeUserEmail(auth.getCurrentUser().getEmail());
+                point = point + 100;
+                myRef2.child("Users").child(encodedEmail).child("point").setValue(point, new DatabaseReference.CompletionListener(){
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                        if(databaseError!=null)
+                        {
+                            //Toast.makeText(getApplicationContext(), "Data could not be saved.",Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            //Toast.makeText(getApplicationContext(), "Data saved successfully.",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                });
+            }
+        });
+        btnWithdraw = (Button) getActivity().findViewById(R.id.btnWithdraw);
+        btnWithdraw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        btnReport = (Button) getActivity().findViewById(R.id.btnReport);
+        btnReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        btnAbout = (Button) getActivity().findViewById(R.id.btnAbout);
+        btnAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        btnHelp = (Button) getActivity().findViewById(R.id.btnHelp);
+        btnHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         btnLivechat = (Button) getActivity().findViewById(R.id.btnLivechat);
         btnLivechat.setOnClickListener(new View.OnClickListener() {
             @Override
