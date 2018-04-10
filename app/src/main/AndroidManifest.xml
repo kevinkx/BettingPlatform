@@ -13,9 +13,7 @@
         <activity
             android:name=".View.RegisterActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".View.FirstActivity">
-
-        </activity>
+        <activity android:name=".View.FirstActivity"></activity>
         <activity
             android:name=".View.LoginActivity"
             android:windowSoftInputMode="adjustPan" />
@@ -29,6 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".View.HomeActivity"
+            android:label="@string/title_activity_home"></activity>
     </application>
 
 </manifest>

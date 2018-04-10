@@ -107,7 +107,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         }
 
                                     });
-                                    startActivity(new Intent(RegisterActivity.this, ChatActivity.class));
+                                    startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
                                     finish();
                                 }
                             }

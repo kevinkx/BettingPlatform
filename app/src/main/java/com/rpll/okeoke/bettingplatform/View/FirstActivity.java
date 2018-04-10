@@ -19,7 +19,7 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(FirstActivity.this, ChatActivity.class));
+            startActivity(new Intent(FirstActivity.this, HomeActivity.class));
             finish();
         }
         setContentView(R.layout.activity_first);

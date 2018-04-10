@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">BettingPlatform</string>
+    <string name="title_activity_home">BettingPlatform</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_dollar">Home</string>
+    <string name="title_history">History</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
