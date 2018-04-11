@@ -19,11 +19,11 @@ import com.rpll.okeoke.bettingplatform.Model.User;
 import com.rpll.okeoke.bettingplatform.R;
 
 public class MainActivity extends AppCompatActivity {
-    private FirebaseAuth auth;
+
     private TextView textView;
     private Button topup;
     private Button logout;
-
+    private FirebaseAuth auth;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef2 = database.getReference();
     User user;

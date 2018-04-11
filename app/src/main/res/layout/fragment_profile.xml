@@ -25,17 +25,16 @@
         android:id="@+id/txtProfile"
         android:layout_width="169dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="52dp"
-        android:layout_marginEnd="52dp"
-        android:layout_marginTop="89dp"
+        android:layout_alignEnd="@+id/btnTopUp"
+        android:layout_alignRight="@+id/btnTopUp"
+        android:layout_alignTop="@+id/profilepic"
+        android:layout_toEndOf="@+id/profilepic"
+        android:layout_toRightOf="@+id/profilepic"
         android:fontFamily="@font/qanelas_semibold"
         android:paddingTop="5dp"
         android:text="profile_detail"
         android:textColor="#000000"
-        android:textSize="23dp" />
+        android:textSize="16dp" />
 
     <View
         android:id="@+id/divider"
@@ -51,15 +50,16 @@
         android:id="@+id/btnEditProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/divider"
+        android:layout_marginTop="29dp"
         android:layout_toLeftOf="@+id/btnLivechat"
         android:layout_toStartOf="@+id/btnLivechat"
         android:width="120dp"
+        android:background="#000000"
         android:fontFamily="@font/qanelas_semibold"
         android:gravity="center_vertical|center"
-        android:textColor="#FFFFFF"
-        android:background="#000000"
-        android:text="Edit Profile" />
+        android:text="Edit Profile"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/btnTopUp"
@@ -143,12 +143,10 @@
         android:id="@+id/profilepic"
         android:layout_width="95dp"
         android:layout_height="95dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_alignLeft="@+id/btnEditProfile"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="41dp"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="64dp"
+        android:layout_alignStart="@+id/btnEditProfile"
+        android:layout_marginTop="40dp"
         android:src="@android:drawable/sym_def_app_icon" />
 
 </RelativeLayout>

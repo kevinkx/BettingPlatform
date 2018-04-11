@@ -43,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = inputEmail.getText().toString().trim();
+                final String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
                 String fullname = inputEmail.getText().toString().trim();
                 String username = inputPassword.getText().toString().trim();
@@ -92,7 +92,7 @@ public class RegisterActivity extends AppCompatActivity {
                                             Toast.LENGTH_SHORT).show();
                                 } else {
                                     User user = new User(inputUsername.getText().toString(), inputFullname.getText().toString(), inputPassword.getText().toString(), 0);
-                                    String encodedEmail = User.encodeUserEmail(inputEmail.getText().toString());
+                                    String encodedEmail = User.encodeUserEmail(email);
                                     myRef.child("Users").child(encodedEmail).setValue(user, new DatabaseReference.CompletionListener(){
                                         @Override
                                         public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {

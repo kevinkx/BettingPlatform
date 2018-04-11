@@ -75,15 +75,12 @@ public class ProfileFragment extends Fragment {
     private Button btnAbout;
     private Button btnHelp;
     private Button btnLivechat;
-    private User user;
     private int point;
-    private DatabaseReference myRef2;
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
-        myRef2 = database.getReference();
         final String email = auth.getCurrentUser().getEmail();
         String encodedEmail = User.encodeUserEmail(email);
         DatabaseReference myRef = database.getReference("Users").child(encodedEmail);
@@ -110,29 +107,16 @@ public class ProfileFragment extends Fragment {
         btnEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent myIntent = new Intent(getActivity(), EditProfileActivity.class);
+                startActivity(myIntent);
             }
         });
         btnTopUp = (Button) getActivity().findViewById(R.id.btnTopUp);
         btnTopUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String encodedEmail = User.encodeUserEmail(auth.getCurrentUser().getEmail());
-                point = point + 100;
-                myRef2.child("Users").child(encodedEmail).child("point").setValue(point, new DatabaseReference.CompletionListener(){
-                    @Override
-                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                        if(databaseError!=null)
-                        {
-                            //Toast.makeText(getApplicationContext(), "Data could not be saved.",Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                        {
-                            //Toast.makeText(getApplicationContext(), "Data saved successfully.",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                });
+                Intent myIntent = new Intent(getActivity(), TopUpActivity.class);
+                startActivity(myIntent);
             }
         });
         btnWithdraw = (Button) getActivity().findViewById(R.id.btnWithdraw);

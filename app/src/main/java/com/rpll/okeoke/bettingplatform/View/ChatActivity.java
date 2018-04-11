@@ -53,7 +53,7 @@ public class ChatActivity extends AppCompatActivity {
         String email = auth.getCurrentUser().getEmail();
         final String encodedEmail = User.encodeUserEmail(email);
         myRefUser = database.getReference("Users").child(encodedEmail);
-        myRefUser.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRefUser.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 username = dataSnapshot.child("username").getValue(String.class);
