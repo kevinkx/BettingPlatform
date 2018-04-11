@@ -13,7 +13,7 @@
         <activity
             android:name=".View.RegisterActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".View.FirstActivity"></activity>
+        <activity android:name=".View.FirstActivity" />
         <activity
             android:name=".View.LoginActivity"
             android:windowSoftInputMode="adjustPan" />
@@ -29,7 +29,8 @@
         </activity>
         <activity
             android:name=".View.HomeActivity"
-            android:label="@string/title_activity_home"></activity>
+            android:label="@string/title_activity_home" />
+        <activity android:name=".View.TopUpActivity"></activity>
     </application>
 
 </manifest>
