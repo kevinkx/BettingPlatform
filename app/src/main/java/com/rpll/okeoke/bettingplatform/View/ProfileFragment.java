@@ -75,12 +75,15 @@ public class ProfileFragment extends Fragment {
     private Button btnAbout;
     private Button btnHelp;
     private Button btnLivechat;
+    private User user;
     private int point;
+    private DatabaseReference myRef2;
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
+        myRef2 = database.getReference();
         final String email = auth.getCurrentUser().getEmail();
         String encodedEmail = User.encodeUserEmail(email);
         DatabaseReference myRef = database.getReference("Users").child(encodedEmail);
@@ -107,16 +110,15 @@ public class ProfileFragment extends Fragment {
         btnEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(getActivity(), EditProfileActivity.class);
-                startActivity(myIntent);
+
             }
         });
         btnTopUp = (Button) getActivity().findViewById(R.id.btnTopUp);
         btnTopUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(getActivity(), TopUpActivity.class);
-                startActivity(myIntent);
+                Intent intent = new Intent(getActivity(), TopUpActivity.class);
+                startActivity(intent);
             }
         });
         btnWithdraw = (Button) getActivity().findViewById(R.id.btnWithdraw);

@@ -2,7 +2,8 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="220dp"
-    android:layout_height="300dp">
+    android:layout_height="300dp"
+    android:background="#575757">
 
 
     <TextView
@@ -12,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:text="TextView" />
+        android:text="Please transfer to BCA Virtual Account:  " />
 
     <Button
         android:id="@+id/poptopbtn"
@@ -30,7 +31,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="94dp"
-        android:text="TextView" />
+        android:text="Rp. 50.018.00" />
 
     <TextView
         android:id="@+id/poptoptxt3"
@@ -39,5 +40,5 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="129dp"
-        android:text="TextView" />
+        android:text="BCA a/n John Cena\n 7771733496" />
 </RelativeLayout>
