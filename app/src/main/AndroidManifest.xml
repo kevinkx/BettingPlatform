@@ -31,7 +31,8 @@
             android:name=".View.HomeActivity"
             android:label="@string/title_activity_home" />
         <activity android:name=".View.TopUpActivity" />
-        <activity android:name=".View.EditProfileActivity"></activity>
+        <activity android:name=".View.EditProfileActivity" />
+        <!--<activity android:name=".View.popup_topup"></activity>-->
     </application>
 
 </manifest>

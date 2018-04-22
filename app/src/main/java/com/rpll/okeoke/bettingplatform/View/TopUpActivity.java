@@ -1,5 +1,6 @@
 package com.rpll.okeoke.bettingplatform.View;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,10 +8,12 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +31,7 @@ public class TopUpActivity extends AppCompatActivity {
     private TextView textView;
     FirebaseDatabase database;
     int point;
+    int amount;
     Button btnSubmit;
     User user;
     EditText editAmount;
@@ -64,49 +68,53 @@ public class TopUpActivity extends AppCompatActivity {
             }
         });
         editAmount = (EditText) findViewById(R.id.amount);
-        btnSubmit = (Button) findViewById(R.id.btnSubmitTop);
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String encodedEmail = User.encodeUserEmail(auth.getCurrentUser().getEmail());
-                if (editAmount.getText().toString().equals("")) {
-                    Toast.makeText(getApplicationContext(), "Enter Amount.", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                int amount = Integer.parseInt(editAmount.getText().toString());
-                user.setPoint(user.getPoint() + amount);
-                myRef2.child("Users").child(encodedEmail).setValue(user, new DatabaseReference.CompletionListener() {
-                    @Override
-                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                        if (databaseError != null) {
-                            Toast.makeText(getApplicationContext(), "Top Up Failed..", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Top Up Successfully.", Toast.LENGTH_SHORT).show();
-                            finish();
-                        }
-                    }
 
-                });
-            }
-        });
+        Spinner spinner = findViewById(R.id.spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item);
+        adapter.add("BCA");
+        adapter.add("Indomaret");
+        adapter.add("Mandiri");
+        spinner.setAdapter(adapter);
     }
 
     public void buttonPopup(View view) {
         RelativeLayout layout = (RelativeLayout) findViewById(R.id.topupactivity);
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View popup = inflater.inflate(R.layout.popup_topup, null);
-
-        int width = RelativeLayout.LayoutParams.WRAP_CONTENT;
-        int height = RelativeLayout.LayoutParams.WRAP_CONTENT;
-        boolean focusable = true;
-        final PopupWindow popupWindow = new PopupWindow(popup, width, height, focusable);
-        popupWindow.showAtLocation(layout, Gravity.CENTER, 0, 0);
-        popup.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                popupWindow.dismiss();
-                return true;
+        if (editAmount.getText().toString().equals("")) {
+            Toast.makeText(getApplicationContext(), "Enter Amount.", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            amount = Integer.parseInt(editAmount.getText().toString());
+            TextView amountText = (TextView)popup.findViewById(R.id.poptoptxt2);
+            amountText.setText("Rp. " + amount +" ,-");
+            boolean focusable = true;
+            final PopupWindow popupWindow = new PopupWindow(popup,660,900,focusable);
+            popupWindow.showAtLocation(layout, Gravity.CENTER, 0, 0);
+            Button submitTopup = popup.findViewById(R.id.poptopbtn);
+            submitTopup.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getBaseContext(), HomeActivity.class);
+                    String encodedEmail = User.encodeUserEmail(auth.getCurrentUser().getEmail());
+                    user.setPoint(user.getPoint() + amount);
+                    myRef2.child("Users").child(encodedEmail).setValue(user, new DatabaseReference.CompletionListener() {
+                        @Override
+                        public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                            if (databaseError != null) {
+                                Toast.makeText(getApplicationContext(), "Top Up Failed..", Toast.LENGTH_SHORT).show();
+                                finish();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Top Up Successfully.", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        }
+                    });
+                    popupWindow.dismiss();
+                    startActivity(intent);
+                }
+            });
             }
-        });
-    }
+        }
+
 }

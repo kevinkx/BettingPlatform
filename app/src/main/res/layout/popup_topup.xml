@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="220dp"
     android:layout_height="300dp"
-    android:background="#575757">
-
+    android:background="#4e678e">
 
     <TextView
         android:id="@+id/poptoptxt1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:textColor="#ffffff"
         android:text="Please transfer to BCA Virtual Account:  " />
 
     <Button
@@ -22,7 +25,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="52dp"
-        android:text="Button" />
+        android:onClick="submitTopup"
+        android:text="Done" />
 
     <TextView
         android:id="@+id/poptoptxt2"
@@ -31,6 +35,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="94dp"
+        android:gravity="center"
+        android:textColor="#fff"
         android:text="Rp. 50.018.00" />
 
     <TextView
@@ -40,5 +46,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="129dp"
+        android:gravity="center"
+        android:textColor="#ffffff"
         android:text="BCA a/n John Cena\n 7771733496" />
+
 </RelativeLayout>

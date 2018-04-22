@@ -62,7 +62,6 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     private FirebaseAuth auth;
@@ -83,6 +82,7 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
+        textView = (TextView) getActivity().findViewById(R.id.txtProfile);
         myRef2 = database.getReference();
         final String email = auth.getCurrentUser().getEmail();
         String encodedEmail = User.encodeUserEmail(email);
@@ -96,7 +96,6 @@ public class ProfileFragment extends Fragment {
                 String username = dataSnapshot.child("username").getValue(String.class);
                 String password = dataSnapshot.child("email").getValue(String.class);
                 point = dataSnapshot.child("point").getValue(int.class);
-                textView = (TextView) getActivity().findViewById(R.id.txtProfile);
                 textView.setText("Fullname: "+fullname+"\n"+"Username: "+username+"\n"+"Email: "+email+"\n"+"Point: "+point+"\n");
             }
 
