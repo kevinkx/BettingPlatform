@@ -105,7 +105,7 @@ public class TopUpActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Top Up Failed..", Toast.LENGTH_SHORT).show();
                                 finish();
                             } else {
-                                Toast.makeText(getApplicationContext(), "Top Up Successfully.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Top Up Successfull.", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         }

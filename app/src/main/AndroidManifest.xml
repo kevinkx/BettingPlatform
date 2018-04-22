@@ -32,7 +32,8 @@
             android:label="@string/title_activity_home" />
         <activity android:name=".View.TopUpActivity" />
         <activity android:name=".View.EditProfileActivity" />
-        <!--<activity android:name=".View.popup_topup"></activity>-->
+        <!-- <activity android:name=".View.popup_topup"></activity> -->
+        <activity android:name=".View.WithdrawActivity"></activity>
     </application>
 
 </manifest>

@@ -124,7 +124,8 @@ public class ProfileFragment extends Fragment {
         btnWithdraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getActivity(), WithdrawActivity.class);
+                startActivity(intent);
             }
         });
         btnReport = (Button) getActivity().findViewById(R.id.btnReport);

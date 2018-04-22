@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/withdrawLayout"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.WithdrawActivity">
+
+    <TextView
+        android:id="@+id/txtProfile"
+        android:layout_width="169dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/profilepic"
+        android:layout_marginEnd="51dp"
+        android:layout_marginRight="51dp"
+        android:fontFamily="@font/qanelas_semibold"
+        android:paddingTop="5dp"
+        android:text="profile_detail"
+        android:textColor="#000000"
+        android:textSize="23dp" />
+
+    <ImageView
+        android:id="@+id/profilepic"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="41dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="64dp"
+        android:src="@android:drawable/sym_def_app_icon" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="174dp"
+        android:background="#5e5f60" />
+
+    <TextView
+        android:id="@+id/textAmount"
+        android:layout_width="119dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/profilepic"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/profilepic"
+        android:layout_marginTop="211dp"
+        android:text="Amount" />
+
+    <EditText
+        android:id="@+id/amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="196dp"
+        android:layout_toEndOf="@+id/textAmount"
+        android:layout_toRightOf="@+id/textAmount"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/txtpayment"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/profilepic"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/profilepic"
+        android:layout_marginBottom="235dp"
+        android:text="Payment" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="215dp"
+        android:layout_height="36dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="225dp"
+        android:layout_toEndOf="@+id/profilepic"
+        android:layout_toRightOf="@+id/profilepic"/>
+
+    <TextView
+        android:id="@+id/textAccnum"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textAmount"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textAmount"
+        android:layout_marginBottom="188dp"
+        android:text="Acc. Number" />
+
+    <EditText
+        android:id="@+id/editaccnum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="168dp"
+        android:layout_toEndOf="@+id/profilepic"
+        android:layout_toRightOf="@+id/profilepic"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/textPass"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textAmount"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textAmount"
+        android:layout_marginBottom="127dp"
+        android:text="Password" />
+
+    <EditText
+        android:id="@+id/editPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="112dp"
+        android:layout_toEndOf="@+id/profilepic"
+        android:layout_toRightOf="@+id/profilepic"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/submitWithdraw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="submitWithdraw"
+        android:layout_marginBottom="35dp"
+        android:text="Withdraw" />
+
+</RelativeLayout>
