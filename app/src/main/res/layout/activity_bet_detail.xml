@@ -58,7 +58,9 @@
         android:layout_centerHorizontal="true"
         android:background="#000000"
         android:fontFamily="@font/qanelas_semibold"
-        android:text=" STATUS "
+        android:text="STATUS"
+        android:paddingLeft="10px"
+        android:paddingRight="10px"
         android:textColor="#FFFFFF"
         android:textSize="15dp" />
 
@@ -133,7 +135,7 @@
         android:inputType="number" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/txtInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/inputPoint"
@@ -158,7 +160,7 @@
         android:id="@+id/bet1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView15"
+        android:layout_above="@+id/txtInfo"
         android:layout_alignEnd="@+id/ods_1"
         android:layout_alignRight="@+id/ods_1"
         android:layout_marginBottom="22dp"

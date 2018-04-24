@@ -67,10 +67,14 @@ public class BetAdapter extends RecyclerView.Adapter<BetAdapter.ViewHolder> {
         final String idMatch = mDataset.get(position).getId_match();
         holder.txtTeam1.setText(mDataset.get(position).getTeam_1());
         holder.txtTeam2.setText(mDataset.get(position).getTeam_2());
-        holder.status.setText(" "+mDataset.get(position).getStatus()+" ");
+        holder.status.setText(mDataset.get(position).getStatus());
         if(mDataset.get(position).getStatus().equalsIgnoreCase("LIVE"))
         {
             holder.status.setBackgroundColor(Color.parseColor("#FF0000"));
+        }
+        else if(mDataset.get(position).getStatus().equalsIgnoreCase("FINISHED"))
+        {
+            holder.status.setBackgroundColor(Color.parseColor("#0B6623"));
         }
         holder.clickHere.setOnClickListener(new View.OnClickListener() {
             @Override

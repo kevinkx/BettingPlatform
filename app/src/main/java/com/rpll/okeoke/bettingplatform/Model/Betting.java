@@ -6,10 +6,20 @@ package com.rpll.okeoke.bettingplatform.Model;
 
 public class Betting {
     int bet_value, selected_team;
+    boolean rewardCollected;
 
-    public Betting(int bet_value, int selected_team) {
+    public boolean isRewardCollected() {
+        return rewardCollected;
+    }
+
+    public void setRewardCollected(boolean rewardCollected) {
+        this.rewardCollected = rewardCollected;
+    }
+
+    public Betting(int bet_value, int selected_team, boolean rewardCollected) {
         this.bet_value = bet_value;
         this.selected_team = selected_team;
+        this.rewardCollected = rewardCollected;
     }
 
     public int getBet_value() {

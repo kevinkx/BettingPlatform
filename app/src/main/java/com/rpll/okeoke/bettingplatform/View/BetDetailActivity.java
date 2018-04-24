@@ -1,6 +1,7 @@
 package com.rpll.okeoke.bettingplatform.View;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,7 +27,7 @@ import com.rpll.okeoke.bettingplatform.R;
 
 public class BetDetailActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener{
     public static String BID;
-    private TextView txtPoint, txtTeam1, txtTeam2,txtOds1,txtOds2,txtBet1,txtBet2,txtStatus;
+    private TextView txtPoint, txtTeam1, txtTeam2,txtOds1,txtOds2,txtBet1,txtBet2,txtStatus, txtInfo;
     private EditText inputPoint;
     private Button btnSubmit;
     private RadioButton rb1;
@@ -36,6 +37,9 @@ public class BetDetailActivity extends AppCompatActivity implements CompoundButt
     private DatabaseReference myRef;
     private DatabaseReference myRef2;
     private DatabaseReference myRef3;
+    private DatabaseReference myRef4;
+    private DatabaseReference myRef5;
+    private User user;
     private String encodedEmail = "";
     private int point = 0;
     @Override
@@ -61,8 +65,12 @@ public class BetDetailActivity extends AppCompatActivity implements CompoundButt
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
+                String fullname = dataSnapshot.child("fullname").getValue(String.class);
+                String username = dataSnapshot.child("username").getValue(String.class);
+                String password = dataSnapshot.child("password").getValue(String.class);
                 point = dataSnapshot.child("point").getValue(int.class);
                 txtPoint.setText("Yout point: "+point);
+                user = new User(username, fullname, password, point);
             }
 
             @Override
@@ -78,6 +86,7 @@ public class BetDetailActivity extends AppCompatActivity implements CompoundButt
         txtOds1 = (TextView) findViewById(R.id.ods_1);
         txtOds2 = (TextView) findViewById(R.id.ods_2);
         txtStatus = (TextView) findViewById(R.id.status);
+        txtInfo = (TextView) findViewById(R.id.txtInfo);
         txtBet1 = (TextView) findViewById(R.id.bet1);
         txtBet2 = (TextView) findViewById(R.id.bet2);
         myRef2 = database.getReference("Matches").child(BID);
@@ -89,19 +98,77 @@ public class BetDetailActivity extends AppCompatActivity implements CompoundButt
                 String team1 = dataSnapshot.child("team_1").getValue(String.class);
                 String team2 = dataSnapshot.child("team_2").getValue(String.class);
                 String status = dataSnapshot.child("status").getValue(String.class);
+                int winner = dataSnapshot.child("winner").getValue(int.class);
+
                 txtTeam1.setText(team1);
                 txtTeam2.setText(team2);
                 txtStatus.setText(status);
+                if(status.equalsIgnoreCase("LIVE"))
+                {
+                    txtStatus.setBackgroundColor(Color.parseColor("#FF0000"));
+                }
+                else if(status.equalsIgnoreCase("FINISHED"))
+                {
+                    txtStatus.setBackgroundColor(Color.parseColor("#0B6623"));
+                }
+                if(status.equalsIgnoreCase("Finished")||status.equalsIgnoreCase("Live"))
+                {
+                    btnSubmit.setEnabled(false);
+                    inputPoint.setEnabled(false);
+                    rb1.setEnabled(false);
+                    rb2.setEnabled(false);
+                }
                 if(dataSnapshot.child("betting").exists())
                 {
                     int selectedTeam = dataSnapshot.child("betting").child(encodedEmail).child("selected_team").getValue(int.class);
+                    int poinBet=dataSnapshot.child("betting").child(encodedEmail).child("bet_value").getValue(int.class);
+                    double ods = 0.0;
                     if(selectedTeam==1)
                     {
-                        txtBet1.setText("P: "+dataSnapshot.child("betting").child(encodedEmail).child("bet_value").getValue(int.class));
+                        txtBet1.setText("P: "+poinBet);
+                        ods = Double.parseDouble(txtOds1.getText().toString());
                     }
                     else if(selectedTeam==2)
                     {
-                        txtBet2.setText("P: "+dataSnapshot.child("betting").child(encodedEmail).child("bet_value").getValue(int.class));
+                        txtBet2.setText("P: "+poinBet);
+                        ods = Double.parseDouble(txtOds2.getText().toString());
+                    }
+                    Boolean rewardCollected = dataSnapshot.child("betting").child(encodedEmail).child("rewardCollected").getValue(Boolean.class);
+                    int totalReward = (int)(poinBet * ods);
+                    if(status.equalsIgnoreCase("Finished"))
+                    {
+
+                        if(rewardCollected==false&&winner==selectedTeam)
+                        {
+                            user.setPoint(user.getPoint() + (poinBet + totalReward));
+                            myRef4.child("Users").child(encodedEmail).setValue(user, new DatabaseReference.CompletionListener() {
+                                @Override
+                                public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                                    if (databaseError != null) {
+                                        Toast.makeText(getApplicationContext(), "Something error.", Toast.LENGTH_SHORT).show();
+                                        finish();
+                                    } else {
+                                        myRef5.child("Matches").child(BID).child("betting").child(encodedEmail).child("rewardCollected").setValue(true);
+                                        Toast.makeText(getApplicationContext(), "You got your reward!.", Toast.LENGTH_SHORT).show();
+                                        finish();
+                                    }
+                                }
+                            });
+
+                        }
+                        else if(rewardCollected==false&&winner!=selectedTeam)
+                        {
+                            myRef5.child("Matches").child(BID).child("betting").child(encodedEmail).child("rewardCollected").setValue(true);
+                        }
+                        else if(winner==selectedTeam)
+                        {
+                            txtInfo.setText("(WIN) Your reward: "+totalReward);
+                        }
+                        else
+                        {
+                            txtInfo.setText("(LOSE) Your reward: -"+poinBet);
+                        }
+
                     }
                 }
 
@@ -118,7 +185,7 @@ public class BetDetailActivity extends AppCompatActivity implements CompoundButt
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int input = Integer.parseInt(inputPoint.getText().toString());
+                final int input = Integer.parseInt(inputPoint.getText().toString());
 
                 if(rb2.isChecked()==false&&rb1.isChecked()==false)
                 {
@@ -135,13 +202,26 @@ public class BetDetailActivity extends AppCompatActivity implements CompoundButt
                     {
                         selected_team = 2;
                     }
-                    Betting betting = new Betting(selected_team,input);
-                    myRef.child("Matches").child(BID).child("betting").child(encodedEmail).setValue(betting, new DatabaseReference.CompletionListener() {
+                    Betting betting = new Betting(selected_team,input, false);
+                    myRef3.child("Matches").child(BID).child("betting").child(encodedEmail).setValue(betting, new DatabaseReference.CompletionListener() {
                         @Override
                         public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                             if (databaseError != null) {
                                 Toast.makeText(getApplicationContext(), "Data could not be saved.", Toast.LENGTH_SHORT).show();
                             } else {
+                                user.setPoint(user.getPoint() - input);
+                                myRef4.child("Users").child(encodedEmail).setValue(user, new DatabaseReference.CompletionListener() {
+                                    @Override
+                                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                                        if (databaseError != null) {
+                                            Toast.makeText(getApplicationContext(), "Betting failed.", Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        } else {
+                                            Toast.makeText(getApplicationContext(), "Betting Successfull.", Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        }
+                                    }
+                                });
                                 Toast.makeText(getApplicationContext(), "Data saved successfully.", Toast.LENGTH_SHORT).show();
                             }
                         }
