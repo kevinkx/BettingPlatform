@@ -35,6 +35,7 @@
         <!-- <activity android:name=".View.popup_topup"></activity> -->
         <activity android:name=".View.WithdrawActivity" />
         <activity android:name=".View.BetDetailActivity"></activity>
+        <activity android:name=".View.AboutActivity"/>
     </application>
 
 </manifest>
