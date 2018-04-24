@@ -115,6 +115,7 @@ public class WithdrawActivity extends AppCompatActivity {
                         });
                         popupWindow.dismiss();
                         startActivity(intent);
+                        finish();
                     }
                 });
 

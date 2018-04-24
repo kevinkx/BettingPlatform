@@ -144,7 +144,8 @@ public class ProfileFragment extends Fragment {
         btnHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getActivity(), HelpActivity.class);
+                startActivity(intent);
             }
         });
         btnLivechat = (Button) getActivity().findViewById(R.id.btnLivechat);

@@ -112,6 +112,7 @@ public class TopUpActivity extends AppCompatActivity {
                     });
                     popupWindow.dismiss();
                     startActivity(intent);
+                    finish();
                 }
             });
             }

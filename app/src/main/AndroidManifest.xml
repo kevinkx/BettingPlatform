@@ -36,7 +36,8 @@
         <activity android:name=".View.WithdrawActivity" />
         <activity android:name=".View.BetDetailActivity" />
         <activity android:name=".View.AboutActivity" />
-        <activity android:name=".View.ReportActivity"></activity>
+        <activity android:name=".View.ReportActivity" />
+        <activity android:name=".View.HelpActivity"></activity>
     </application>
 
 </manifest>
