@@ -88,6 +88,7 @@
         android:layout_alignEnd="@+id/team_1"
         android:layout_alignRight="@+id/team_1"
         android:layout_marginBottom="11dp"
+        android:textColor="#6B3fa0"
         android:fontFamily="@font/qanelas_semibold"
         android:text="0.95" />
 
@@ -99,6 +100,7 @@
         android:layout_alignBottom="@+id/ods_1"
         android:layout_alignLeft="@+id/team_2"
         android:layout_alignStart="@+id/team_2"
+        android:textColor="#6B3fa0"
         android:fontFamily="@font/qanelas_semibold"
         android:text="0.95" />
     <RadioButton

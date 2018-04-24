@@ -27,6 +27,7 @@ import com.rpll.okeoke.bettingplatform.Model.User;
 import com.rpll.okeoke.bettingplatform.R;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class BetDetailActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener{
@@ -215,7 +216,7 @@ public class BetDetailActivity extends AppCompatActivity implements CompoundButt
                     ods1 = (team1/(team1+team2))*0.95;
                     ods2 = 0.95/ods1;
                 }
-                else if(team2<team1)
+                else if(team2>team1)
                 {
                     ods2 = (team2/(team1+team2))*0.95;
                     ods1 = 0.95/ods2;
@@ -224,9 +225,9 @@ public class BetDetailActivity extends AppCompatActivity implements CompoundButt
                     ods1 = 0.95;
                     ods2 = 0.95;
                 }
-                DecimalFormat df = new DecimalFormat("#.00");
-                txtOds1.setText(""+df.format(ods1));
-                txtOds2.setText(""+df.format(ods1));
+                NumberFormat formatter = new DecimalFormat("#0.00");
+                txtOds1.setText(""+formatter.format(ods1));
+                txtOds2.setText(""+formatter.format(ods2));
 
             }
 
