@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.ReportActivity">
+
+    <TextView
+        android:id="@+id/textSendReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center_horizontal"
+        android:fontFamily="@font/qanelas_semibold"
+        android:textSize="25dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#000"
+        android:layout_centerHorizontal="true"
+        android:text="Report Feedback" />
+
+    <EditText
+        android:id="@+id/editCategory"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/edittxt_bg"
+        android:ems="10"
+        android:paddingLeft="10dp"
+        android:inputType="textPersonName"
+        android:hint="Category" />
+
+    <EditText
+        android:id="@+id/editreportContent"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/edittxt_bg"
+        android:layout_alignStart="@+id/editCategory"
+        android:layout_alignLeft="@+id/editCategory"
+        android:layout_marginTop="140dp"
+        android:ems="10"
+        android:hint="Report Content"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:gravity="left"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/submitReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="58dp"
+        android:onClick="submitReport"
+        android:text="Submit Report" />
+
+
+</RelativeLayout>

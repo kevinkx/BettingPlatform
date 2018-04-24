@@ -128,7 +128,8 @@ public class ProfileFragment extends Fragment {
         btnReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getActivity(), ReportActivity.class);
+                startActivity(intent);
             }
         });
         btnAbout = (Button) getActivity().findViewById(R.id.btnAbout);

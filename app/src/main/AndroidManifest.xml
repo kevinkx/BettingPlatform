@@ -34,8 +34,9 @@
         <activity android:name=".View.EditProfileActivity" />
         <!-- <activity android:name=".View.popup_topup"></activity> -->
         <activity android:name=".View.WithdrawActivity" />
-        <activity android:name=".View.BetDetailActivity"></activity>
-        <activity android:name=".View.AboutActivity"/>
+        <activity android:name=".View.BetDetailActivity" />
+        <activity android:name=".View.AboutActivity" />
+        <activity android:name=".View.ReportActivity"></activity>
     </application>
 
 </manifest>
