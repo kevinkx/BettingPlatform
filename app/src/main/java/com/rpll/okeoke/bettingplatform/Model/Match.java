@@ -7,17 +7,17 @@ import java.util.Date;
  */
 
 public class Match {
-    String id_match, team_1, team_2;
-    Date date;
+    String team_1, team_2, status;
+    String id_match;
 
     public Match() {
     }
 
-    public Match(String id_match, String team_1, String team_2, Date date) {
+    public Match(String id_match, String team_1, String team_2, String status) {
         this.id_match = id_match;
         this.team_1 = team_1;
         this.team_2 = team_2;
-        this.date = date;
+        this.status = status;
     }
 
     public String getId_match() {
@@ -44,11 +44,11 @@ public class Match {
         this.team_2 = team_2;
     }
 
-    public Date getDate() {
-        return date;
+    public String getStatus() {
+        return status;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

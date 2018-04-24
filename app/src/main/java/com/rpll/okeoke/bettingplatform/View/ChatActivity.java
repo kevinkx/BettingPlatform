@@ -45,6 +45,7 @@ public class ChatActivity extends AppCompatActivity {
     DatabaseReference myRef2 = database.getReference();
     DatabaseReference myRefUser;
     String username = "Anonymous";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,8 +91,7 @@ public class ChatActivity extends AppCompatActivity {
                     chat.setUsername(dataSnapshot.child(Integer.toString(i)).child("username").getValue(String.class));
                     chat.setChat(dataSnapshot.child(Integer.toString(i)).child("chat").getValue(String.class));
                     chat.setDate(dataSnapshot.child(Integer.toString(i)).child("date").getValue(String.class));
-                    if(dataSnapshot.child(Integer.toString(i)).child("email").getValue(String.class).equals(encodedEmail))
-                    {
+                    if (dataSnapshot.child(Integer.toString(i)).child("email").getValue(String.class).equals(encodedEmail)) {
                         myChat = true;
                     }
                     chat.setMyChat(myChat);
@@ -114,7 +114,7 @@ public class ChatActivity extends AppCompatActivity {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               String isiChat = inputChat.getText().toString();
+                String isiChat = inputChat.getText().toString();
                 inputChat.setText("");
                 inputChat.clearFocus();
                 if (TextUtils.isEmpty(isiChat)) {
@@ -129,7 +129,7 @@ public class ChatActivity extends AppCompatActivity {
                 // Using DateFormat format method we can create a string
                 // representation of a date with the defined format.
                 String reportDate = df.format(today);
-                Livechat livechat = new Livechat(username, encodedEmail,isiChat, reportDate);
+                Livechat livechat = new Livechat(username, encodedEmail, isiChat, reportDate);
                 myRef2.child("Livechat").child(Long.toString(totalChat)).setValue(livechat, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
@@ -143,17 +143,18 @@ public class ChatActivity extends AppCompatActivity {
         });
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.action_bar, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if(id== R.id.action_logout)
-        {
+        if (id == R.id.action_logout) {
             auth.signOut();
             startActivity(new Intent(ChatActivity.this, FirstActivity.class));
             finish();

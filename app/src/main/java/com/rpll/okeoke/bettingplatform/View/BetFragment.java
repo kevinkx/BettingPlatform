@@ -3,12 +3,31 @@ package com.rpll.okeoke.bettingplatform.View;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.rpll.okeoke.bettingplatform.Adapter.BetAdapter;
+import com.rpll.okeoke.bettingplatform.Adapter.ChatAdapter;
+import com.rpll.okeoke.bettingplatform.Model.Livechat;
+import com.rpll.okeoke.bettingplatform.Model.Match;
 import com.rpll.okeoke.bettingplatform.R;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,7 +42,13 @@ public class BetFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private RecyclerView mRecyclerView;
+    private ArrayList<Match> matches = new ArrayList<>();
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private FirebaseAuth auth;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -51,7 +76,41 @@ public class BetFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        mRecyclerView = (RecyclerView) getActivity().findViewById(R.id.viewBet);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        myRef = database.getReference("Matches");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                // specify an adapter (see also next example)
+                long totalBet = dataSnapshot.getChildrenCount();
+                matches = new ArrayList<>();
+                Match match;
+                for (int i = 0; i < totalBet; i++) {
+                    match = new Match();
+                    match.setTeam_1(dataSnapshot.child(Integer.toString(i)).child("team_1").getValue(String.class));
+                    match.setTeam_2(dataSnapshot.child(Integer.toString(i)).child("team_2").getValue(String.class));
+                    match.setId_match(dataSnapshot.child(Integer.toString(i)).child("idmatch").getValue(String.class));
+                    match.setStatus(dataSnapshot.child(Integer.toString(i)).child("status").getValue(String.class));
+                    matches.add(match);
+                }
+                mAdapter = new BetAdapter(matches);
+                mRecyclerView.setAdapter(mAdapter);
+            }
 
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("sout", "Failed to read value.", error.toException());
+            }
+        });
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +118,7 @@ public class BetFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override

@@ -28,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
     DatabaseReference myRef = database.getReference();
     EditText inputFullname, inputUsername, inputEmail, inputPassword, inputCpassword;
     Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +65,8 @@ public class RegisterActivity extends AppCompatActivity {
                 if (TextUtils.isEmpty(username)) {
                     Toast.makeText(getApplicationContext(), "Enter username!", Toast.LENGTH_SHORT).show();
                     return;
-                } if (TextUtils.isEmpty(cpassword)) {
+                }
+                if (TextUtils.isEmpty(cpassword)) {
                     Toast.makeText(getApplicationContext(), "Enter confirm password!", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -72,7 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (cpassword.equals(password)==false) {
+                if (cpassword.equals(password) == false) {
                     Toast.makeText(getApplicationContext(), "Password and confirm password does not match!", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -93,16 +95,13 @@ public class RegisterActivity extends AppCompatActivity {
                                 } else {
                                     User user = new User(inputUsername.getText().toString(), inputFullname.getText().toString(), inputPassword.getText().toString(), 0);
                                     String encodedEmail = User.encodeUserEmail(email);
-                                    myRef.child("Users").child(encodedEmail).setValue(user, new DatabaseReference.CompletionListener(){
+                                    myRef.child("Users").child(encodedEmail).setValue(user, new DatabaseReference.CompletionListener() {
                                         @Override
                                         public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                                            if(databaseError!=null)
-                                            {
-                                                Toast.makeText(getApplicationContext(), "Data could not be saved.",Toast.LENGTH_SHORT).show();
-                                            }
-                                            else
-                                            {
-                                                Toast.makeText(getApplicationContext(), "Data saved successfully.",Toast.LENGTH_SHORT).show();
+                                            if (databaseError != null) {
+                                                Toast.makeText(getApplicationContext(), "Data could not be saved.", Toast.LENGTH_SHORT).show();
+                                            } else {
+                                                Toast.makeText(getApplicationContext(), "Data saved successfully.", Toast.LENGTH_SHORT).show();
                                             }
                                         }
 
