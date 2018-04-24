@@ -7,7 +7,7 @@ import java.util.Date;
  */
 
 public class Match {
-    String team_1, team_2, status;
+    String team_1, team_2, status, winner;
     String id_match;
 
     public Match() {
@@ -50,5 +50,13 @@ public class Match {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getWinner() {
+        return winner;
+    }
+
+    public void setWin(String winner) {
+        this.winner = winner;
     }
 }

@@ -1,17 +1,17 @@
 package com.rpll.okeoke.bettingplatform.Adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.rpll.okeoke.bettingplatform.Model.Betting;
-import com.rpll.okeoke.bettingplatform.Model.Livechat;
 import com.rpll.okeoke.bettingplatform.Model.Match;
 import com.rpll.okeoke.bettingplatform.R;
+import com.rpll.okeoke.bettingplatform.View.BetDetailActivity;
 
 import java.util.ArrayList;
 
@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 public class BetAdapter extends RecyclerView.Adapter<BetAdapter.ViewHolder> {
     private ArrayList<Match> mDataset;
+    private Context mContext;
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
@@ -41,8 +42,9 @@ public class BetAdapter extends RecyclerView.Adapter<BetAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public BetAdapter(ArrayList<Match> myDataset) {
+    public BetAdapter(ArrayList<Match> myDataset, Context context) {
         mDataset = myDataset;
+        mContext = context;
     }
 
     // Create new views (invoked by the layout manager)
@@ -62,7 +64,7 @@ public class BetAdapter extends RecyclerView.Adapter<BetAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        String idMatch = mDataset.get(position).getId_match();
+        final String idMatch = mDataset.get(position).getId_match();
         holder.txtTeam1.setText(mDataset.get(position).getTeam_1());
         holder.txtTeam2.setText(mDataset.get(position).getTeam_2());
         holder.status.setText(" "+mDataset.get(position).getStatus()+" ");
@@ -73,7 +75,10 @@ public class BetAdapter extends RecyclerView.Adapter<BetAdapter.ViewHolder> {
         holder.clickHere.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                BetDetailActivity.BID = new String();
+                Intent intent = new Intent(mContext, BetDetailActivity.class);
+                BetDetailActivity.BID = idMatch;
+                mContext.startActivity(intent);
             }
         });
     }

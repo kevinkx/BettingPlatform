@@ -4,6 +4,184 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     tools:context="com.rpll.okeoke.bettingplatform.View.BetDetailActivity">
+
+    <TextView
+        android:id="@+id/team_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/status"
+        android:layout_toEndOf="@+id/selectedTeam1"
+        android:layout_toLeftOf="@+id/status"
+        android:layout_toRightOf="@+id/selectedTeam1"
+        android:layout_toStartOf="@+id/status"
+        android:fontFamily="@font/qanelas_semibold"
+        android:gravity="center"
+        android:text="team_1"
+        android:textColor="#000000"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/team_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/status"
+        android:layout_toEndOf="@+id/status"
+        android:layout_toLeftOf="@+id/selectedTeam2"
+        android:layout_toRightOf="@+id/status"
+        android:layout_toStartOf="@+id/selectedTeam2"
+        android:fontFamily="@font/qanelas_semibold"
+        android:gravity="center"
+        android:text="team_2"
+        android:textColor="#000000"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/team_2"
+        android:layout_below="@+id/status"
+        android:layout_centerHorizontal="true"
+        android:text="VS"
+        android:fontFamily="@font/qanelas_semibold"
+        android:gravity="center_vertical"
+        android:textColor="#000000"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtPoint"
+        android:layout_centerHorizontal="true"
+        android:background="#000000"
+        android:fontFamily="@font/qanelas_semibold"
+        android:text=" STATUS "
+        android:textColor="#FFFFFF"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/txtPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:textColor="#000000"
+        android:gravity="right"
+        android:textSize="20dp"
+        android:paddingRight="10dp"
+        android:fontFamily="@font/qanelas_semibold"
+        android:text="Your point: 0" />
+
+    <TextView
+        android:id="@+id/ods_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bet1"
+        android:layout_alignEnd="@+id/team_1"
+        android:layout_alignRight="@+id/team_1"
+        android:layout_marginBottom="11dp"
+        android:fontFamily="@font/qanelas_semibold"
+        android:text="0.95" />
+
+    <TextView
+        android:id="@+id/ods_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/ods_1"
+        android:layout_alignBottom="@+id/ods_1"
+        android:layout_alignLeft="@+id/team_2"
+        android:layout_alignStart="@+id/team_2"
+        android:fontFamily="@font/qanelas_semibold"
+        android:text="0.95" />
+    <RadioButton
+        android:id="@+id/selectedTeam1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <RadioButton
+        android:id="@+id/selectedTeam2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/qanelas_semibold"
+        android:layout_alignBaseline="@+id/textView"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true" />
+
+    <EditText
+        android:id="@+id/inputPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/selectedTeam1"
+        android:layout_toLeftOf="@+id/selectedTeam2"
+        android:layout_toRightOf="@+id/selectedTeam1"
+        android:layout_toStartOf="@+id/selectedTeam2"
+        android:hint="Insert here $"
+        android:fontFamily="@font/qanelas_semibold"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/inputPoint"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="27dp"
+        android:gravity="center"
+        android:textColor="#ff0000"
+        android:fontFamily="@font/qanelas_semibold"
+        android:text="Fill the amount you want to bet!" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inputPoint"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/qanelas_semibold"
+        android:layout_marginTop="60dp"
+        android:text="Submit" />
+
+    <TextView
+        android:id="@+id/bet1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView15"
+        android:layout_alignEnd="@+id/ods_1"
+        android:layout_alignRight="@+id/ods_1"
+        android:layout_marginBottom="22dp"
+        android:layout_toEndOf="@+id/selectedTeam1"
+        android:layout_toRightOf="@+id/selectedTeam1"
+        android:fontFamily="@font/qanelas_semibold"
+        android:gravity="center"
+        android:text="P: 0"
+        android:textColor="#F9A602" />
+
+    <TextView
+        android:id="@+id/bet2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/bet1"
+        android:layout_alignBottom="@+id/bet1"
+        android:layout_alignLeft="@+id/ods_2"
+        android:layout_alignStart="@+id/ods_2"
+        android:layout_toLeftOf="@+id/selectedTeam2"
+        android:layout_toStartOf="@+id/selectedTeam2"
+        android:fontFamily="@font/qanelas_semibold"
+        android:gravity="center"
+        android:text="P: 0"
+        android:textColor="#F9A602" />
 
 </RelativeLayout>

@@ -100,7 +100,7 @@ public class BetFragment extends Fragment {
                     match.setStatus(dataSnapshot.child(Integer.toString(i)).child("status").getValue(String.class));
                     matches.add(match);
                 }
-                mAdapter = new BetAdapter(matches);
+                mAdapter = new BetAdapter(matches, getContext());
                 mRecyclerView.setAdapter(mAdapter);
             }
 
