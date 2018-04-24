@@ -22,8 +22,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rpll.okeoke.bettingplatform.Model.Betting;
+import com.rpll.okeoke.bettingplatform.Model.Match;
 import com.rpll.okeoke.bettingplatform.Model.User;
 import com.rpll.okeoke.bettingplatform.R;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class BetDetailActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener{
     public static String BID;
@@ -36,9 +40,10 @@ public class BetDetailActivity extends AppCompatActivity implements CompoundButt
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRef;
     private DatabaseReference myRef2;
-    private DatabaseReference myRef3;
-    private DatabaseReference myRef4;
-    private DatabaseReference myRef5;
+    private DatabaseReference myRef3 = database.getReference();
+    private DatabaseReference myRef4 = database.getReference();
+    private DatabaseReference myRef5 = database.getReference();
+    private DatabaseReference myRef6 = database.getReference();
     private User user;
     private String encodedEmail = "";
     private int point = 0;
@@ -120,6 +125,9 @@ public class BetDetailActivity extends AppCompatActivity implements CompoundButt
                 }
                 if(dataSnapshot.child("betting").exists())
                 {
+                    btnSubmit.setEnabled(false);
+                    inputPoint.setEnabled(false);
+                    txtInfo.setText("You already choose, please wait for the match.");
                     int selectedTeam = dataSnapshot.child("betting").child(encodedEmail).child("selected_team").getValue(int.class);
                     int poinBet=dataSnapshot.child("betting").child(encodedEmail).child("bet_value").getValue(int.class);
                     double ods = 0.0;
@@ -127,17 +135,18 @@ public class BetDetailActivity extends AppCompatActivity implements CompoundButt
                     {
                         txtBet1.setText("P: "+poinBet);
                         ods = Double.parseDouble(txtOds1.getText().toString());
+                        rb1.setChecked(true);
                     }
                     else if(selectedTeam==2)
                     {
                         txtBet2.setText("P: "+poinBet);
                         ods = Double.parseDouble(txtOds2.getText().toString());
+                        rb2.setChecked(true);
                     }
                     Boolean rewardCollected = dataSnapshot.child("betting").child(encodedEmail).child("rewardCollected").getValue(Boolean.class);
                     int totalReward = (int)(poinBet * ods);
                     if(status.equalsIgnoreCase("Finished"))
                     {
-
                         if(rewardCollected==false&&winner==selectedTeam)
                         {
                             user.setPoint(user.getPoint() + (poinBet + totalReward));
@@ -180,6 +189,54 @@ public class BetDetailActivity extends AppCompatActivity implements CompoundButt
                 Log.w("sout", "Failed to read value.", error.toException());
             }
         });
+        myRef6 = database.getReference("Matches").child(BID).child("betting");
+        myRef6.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                long totalBet = dataSnapshot.getChildrenCount();
+                double team1=0;
+                double team2=0;
+                double ods1=0,ods2=0;
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                        if(child.child("selected_team").getValue(int.class)==1)
+                        {
+                            team1+=child.child("bet_value").getValue(int.class);
+                        }
+                        else
+                        {
+                            team2+=child.child("bet_value").getValue(int.class);
+                        }
+
+                }
+                if(team1>team2)
+                {
+                    ods1 = (team1/(team1+team2))*0.95;
+                    ods2 = 0.95/ods1;
+                }
+                else if(team2<team1)
+                {
+                    ods2 = (team2/(team1+team2))*0.95;
+                    ods1 = 0.95/ods2;
+                }
+                else{
+                    ods1 = 0.95;
+                    ods2 = 0.95;
+                }
+                DecimalFormat df = new DecimalFormat("#.00");
+                txtOds1.setText(""+df.format(ods1));
+                txtOds2.setText(""+df.format(ods1));
+
+            }
+
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("sout", "Failed to read value.", error.toException());
+            }
+        });
         inputPoint = (EditText) findViewById(R.id.inputPoint);
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
         btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -202,7 +259,7 @@ public class BetDetailActivity extends AppCompatActivity implements CompoundButt
                     {
                         selected_team = 2;
                     }
-                    Betting betting = new Betting(selected_team,input, false);
+                    Betting betting = new Betting(input,selected_team, false);
                     myRef3.child("Matches").child(BID).child("betting").child(encodedEmail).setValue(betting, new DatabaseReference.CompletionListener() {
                         @Override
                         public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
@@ -222,7 +279,7 @@ public class BetDetailActivity extends AppCompatActivity implements CompoundButt
                                         }
                                     }
                                 });
-                                Toast.makeText(getApplicationContext(), "Data saved successfully.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "betting...", Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -231,7 +288,7 @@ public class BetDetailActivity extends AppCompatActivity implements CompoundButt
                 }
                 else
                 {
-                    Toast.makeText(BetDetailActivity.this,"Not enough point!",Toast.LENGTH_SHORT);
+                    Toast.makeText(getApplicationContext(),"Not enough point!",Toast.LENGTH_SHORT).show();
                 }
             }
         });

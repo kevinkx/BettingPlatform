@@ -66,7 +66,9 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="7dp"
             android:background="#000000"
-            android:text=" STATUS "
+            android:text="STATUS"
+            android:paddingLeft="10px"
+            android:paddingRight="10px"
             android:fontFamily="@font/qanelas_semibold"
             android:textColor="#FFFFFF" />
 
