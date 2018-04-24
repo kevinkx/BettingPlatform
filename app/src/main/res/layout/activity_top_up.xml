@@ -50,7 +50,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/profilepic"
         android:layout_marginTop="211dp"
-        android:text="TextView" />
+        android:text="Amount" />
 
     <EditText
         android:id="@+id/amount"
@@ -71,7 +71,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/textAmount"
         android:layout_marginBottom="203dp"
-        android:text="TextView" />
+        android:text="Payment Method" />
 
     <Spinner
         android:id="@+id/spinner"

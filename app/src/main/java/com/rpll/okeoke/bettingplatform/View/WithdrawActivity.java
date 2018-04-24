@@ -7,10 +7,12 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -71,6 +73,13 @@ public class WithdrawActivity extends AppCompatActivity {
                 Log.w("sout", "Failed to read value.", error.toException());
             }
         });
+
+        Spinner spinner = findViewById(R.id.spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item);
+        adapter.add("BCA");
+        adapter.add("Paypal");
+        adapter.add("Steam Wallet");
+        spinner.setAdapter(adapter);
 
     }
         public void submitWithdraw(View view){
