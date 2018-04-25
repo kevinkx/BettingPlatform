@@ -85,12 +85,13 @@ public class EditMatchActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Enter Winner!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(status.equalsIgnoreCase("Finished")&&(winner!=1||winner!=2))
+                if(status.equalsIgnoreCase("Finished")&&winner!=1&&winner!=2)
                 {
                     Toast.makeText(getApplicationContext(), "Who's the winner?", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Match match = new Match();
+                match.setId_match(BID);
                 match.setTeam_1(team1);
                 match.setTeam_2(team2);
                 match.setStatus(status);
@@ -103,6 +104,7 @@ public class EditMatchActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Data could not be saved.", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(getApplicationContext(), "Data saved successfully.", Toast.LENGTH_SHORT).show();
+                            finish();
                         }
                     }
 
