@@ -143,10 +143,11 @@
         android:id="@+id/profilepic"
         android:layout_width="95dp"
         android:layout_height="95dp"
+        android:paddingRight="10dp"
         android:layout_alignLeft="@+id/btnEditProfile"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/btnEditProfile"
         android:layout_marginTop="40dp"
-        android:src="@android:drawable/sym_def_app_icon" />
+        android:src="@drawable/orang" />
 
 </RelativeLayout>
