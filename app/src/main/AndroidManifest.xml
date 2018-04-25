@@ -37,7 +37,9 @@
         <activity android:name=".View.BetDetailActivity" />
         <activity android:name=".View.AboutActivity" />
         <activity android:name=".View.ReportActivity" />
-        <activity android:name=".View.HelpActivity"></activity>
+        <activity android:name=".View.HelpActivity" />
+        <activity android:name=".View.ViewReportActivity" />
+        <activity android:name=".View.ViewDetailReportActivity"></activity>
     </application>
 
 </manifest>
