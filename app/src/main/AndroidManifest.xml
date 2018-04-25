@@ -20,7 +20,13 @@
         <activity
             android:name=".View.ChatActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".View.LoadingActivity"></activity>
+        <activity android:name=".View.LoadingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".View.HomeActivity"
             android:label="@string/title_activity_home" />
@@ -32,13 +38,8 @@
         <activity android:name=".View.AboutActivity" />
         <activity android:name=".View.ReportActivity" />
         <activity android:name=".View.HelpActivity" />
-        <activity android:name=".View.AdminActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".View.AdminActivity" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".View.AddMatchActivity" />
         <activity android:name=".View.ViewMatchActivity"></activity>
         <activity android:name=".View.ViewReportActivity" />

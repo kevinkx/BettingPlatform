@@ -81,7 +81,8 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, EditMatchActivity.class);
-                intent.putExtra("BID",idMatch);
+                EditMatchActivity.BID = new String();
+                EditMatchActivity.BID = idMatch;
                 mContext.startActivity(intent);
             }
         });

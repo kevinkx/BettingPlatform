@@ -20,7 +20,7 @@ import com.rpll.okeoke.bettingplatform.Model.User;
 import com.rpll.okeoke.bettingplatform.R;
 
 public class EditMatchActivity extends AppCompatActivity {
-    private String BID = getIntent().getStringExtra("BID");;
+    public static String BID;
     private EditText inputTeam1,inputTeam2,inputStatus,inputWinner;
     private Button btnSave;
     private TextView btnDelete;
@@ -45,7 +45,10 @@ public class EditMatchActivity extends AppCompatActivity {
                 String team1 = dataSnapshot.child("team_1").getValue(String.class);
                 String team2 = dataSnapshot.child("team_2").getValue(String.class);
                 String status = dataSnapshot.child("status").getValue(String.class);
-                int winner =  dataSnapshot.child("winner").getValue(int.class);
+                int winner = 0;
+                if(dataSnapshot.child("winner").getValue(int.class)!=null){
+                    winner =  dataSnapshot.child("winner").getValue(int.class);
+                }
                 inputTeam1.setText(team1);
                 inputTeam2.setText(team2);
                 inputStatus.setText(status);
@@ -111,6 +114,7 @@ public class EditMatchActivity extends AppCompatActivity {
             public void onClick(View view) {
                 DatabaseReference myRef = database.getReference("Matches").child(BID);
                 myRef.removeValue();
+                finish();
             }
         });
     }

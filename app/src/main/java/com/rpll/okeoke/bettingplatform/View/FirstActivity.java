@@ -19,7 +19,12 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(FirstActivity.this, HomeActivity.class));
+            if (auth.getCurrentUser().getEmail().equalsIgnoreCase("admin@bettingplatform.com")) {
+                startActivity(new Intent(FirstActivity.this, AdminActivity.class));
+            } else
+            {
+                startActivity(new Intent(FirstActivity.this, HomeActivity.class));
+            }
             finish();
         }
         setContentView(R.layout.activity_first);

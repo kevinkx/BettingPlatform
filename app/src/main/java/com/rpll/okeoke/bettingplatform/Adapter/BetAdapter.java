@@ -79,8 +79,10 @@ public class BetAdapter extends RecyclerView.Adapter<BetAdapter.ViewHolder> {
         holder.clickHere.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(mContext, BetDetailActivity.class);
-                intent.putExtra("BID",idMatch);
+                BetDetailActivity.BID = new String();
+                BetDetailActivity.BID = idMatch;
                 mContext.startActivity(intent);
             }
         });

@@ -27,7 +27,12 @@ public class LoginActivity extends AppCompatActivity {
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+            if (auth.getCurrentUser().getEmail().equalsIgnoreCase("admin@bettingplatform.com")) {
+                startActivity(new Intent(LoginActivity.this, AdminActivity.class));
+            } else
+            {
+                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+            }
             finish();
         }
         setContentView(R.layout.activity_login);
