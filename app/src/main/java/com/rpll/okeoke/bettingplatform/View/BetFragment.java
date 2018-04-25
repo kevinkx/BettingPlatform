@@ -96,7 +96,7 @@ public class BetFragment extends Fragment {
                     match = new Match();
                     match.setTeam_1(dataSnapshot.child(Integer.toString(i)).child("team_1").getValue(String.class));
                     match.setTeam_2(dataSnapshot.child(Integer.toString(i)).child("team_2").getValue(String.class));
-                    match.setId_match(dataSnapshot.child(Integer.toString(i)).child("idmatch").getValue(String.class));
+                    match.setId_match(dataSnapshot.child(Integer.toString(i)).child("id_match").getValue(String.class));
                     match.setStatus(dataSnapshot.child(Integer.toString(i)).child("status").getValue(String.class));
                     if(match.getStatus().equalsIgnoreCase("LIVE"))
                     {

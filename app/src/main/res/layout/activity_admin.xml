@@ -32,19 +32,19 @@
         android:text="Add Match" />
 
     <Button
-        android:id="@+id/btnEdit"
+        android:id="@+id/btnMatch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnAdd"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:text="Edit Match" />
+        android:text="View Match" />
 
     <Button
         android:id="@+id/btnReport"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnEdit"
+        android:layout_below="@+id/btnMatch"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:text="View Report" />

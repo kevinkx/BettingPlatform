@@ -20,9 +20,7 @@
         <activity
             android:name=".View.ChatActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".View.LoadingActivity">
-
-        </activity>
+        <activity android:name=".View.LoadingActivity"></activity>
         <activity
             android:name=".View.HomeActivity"
             android:label="@string/title_activity_home" />
@@ -42,12 +40,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".View.AddMatchActivity" />
-        <activity android:name=".View.ViewMatchActivity">
-
-        </activity>
-
+        <activity android:name=".View.ViewMatchActivity"></activity>
         <activity android:name=".View.ViewReportActivity" />
-        <activity android:name=".View.ViewDetailReportActivity"></activity>
+        <activity android:name=".View.ViewDetailReportActivity" />
+        <activity android:name=".View.EditMatchActivity"></activity>
     </application>
 
 </manifest>

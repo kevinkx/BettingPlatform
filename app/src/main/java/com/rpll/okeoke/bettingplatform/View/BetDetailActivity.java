@@ -31,7 +31,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class BetDetailActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener{
-    public static String BID;
+    private String BID = getIntent().getStringExtra("BID");;
     private TextView txtPoint, txtTeam1, txtTeam2,txtOds1,txtOds2,txtBet1,txtBet2,txtStatus, txtInfo;
     private EditText inputPoint;
     private Button btnSubmit;

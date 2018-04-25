@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.rpll.okeoke.bettingplatform.Model.Match;
 import com.rpll.okeoke.bettingplatform.R;
 import com.rpll.okeoke.bettingplatform.View.BetDetailActivity;
+import com.rpll.okeoke.bettingplatform.View.EditMatchActivity;
 
 import java.util.ArrayList;
 
@@ -19,7 +20,7 @@ import java.util.ArrayList;
  * Created by Kevin on 4/7/2018.
  */
 
-public class BetAdapter extends RecyclerView.Adapter<BetAdapter.ViewHolder> {
+public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> {
     private ArrayList<Match> mDataset;
     private Context mContext;
     // Provide a reference to the views for each data item
@@ -42,18 +43,18 @@ public class BetAdapter extends RecyclerView.Adapter<BetAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public BetAdapter(ArrayList<Match> myDataset, Context context) {
+    public MatchAdapter(ArrayList<Match> myDataset, Context context) {
         mDataset = myDataset;
         mContext = context;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public BetAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                    int viewType) {
+    public MatchAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                      int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.row_bet, parent, false);
+                .inflate(R.layout.row_match, parent, false);
 
         ViewHolder vh = new ViewHolder(v);
         return vh;
@@ -79,7 +80,7 @@ public class BetAdapter extends RecyclerView.Adapter<BetAdapter.ViewHolder> {
         holder.clickHere.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, BetDetailActivity.class);
+                Intent intent = new Intent(mContext, EditMatchActivity.class);
                 intent.putExtra("BID",idMatch);
                 mContext.startActivity(intent);
             }

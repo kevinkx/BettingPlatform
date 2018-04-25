@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="#a1a1a1"
+            android:id="@+id/view" />
+
+        <TextView
+            android:id="@+id/team_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/status"
+            android:fontFamily="@font/qanelas_semibold"
+            android:gravity="center"
+            android:text="team_1"
+            android:textColor="#000000"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/team_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/status"
+            android:layout_toRightOf="@+id/status"
+            android:fontFamily="@font/qanelas_semibold"
+            android:gravity="center"
+            android:text="team_2"
+            android:textColor="#000000"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:fontFamily="@font/qanelas_semibold"
+            android:textSize="15dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="VS" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="7dp"
+            android:background="#000000"
+            android:text="STATUS"
+            android:paddingLeft="10px"
+            android:paddingRight="10px"
+            android:fontFamily="@font/qanelas_semibold"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/clickHere"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/view"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/qanelas_semibold"
+            android:paddingBottom="3dp"
+            android:text="Click Here to Edit"
+            android:textColor="#FF0000" />
+
+    </RelativeLayout>
+
+</LinearLayout>

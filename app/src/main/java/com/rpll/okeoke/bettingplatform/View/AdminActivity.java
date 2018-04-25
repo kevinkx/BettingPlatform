@@ -9,24 +9,27 @@ import android.widget.Button;
 import com.rpll.okeoke.bettingplatform.R;
 
 public class AdminActivity extends AppCompatActivity {
-    private Button btnAdd,btnEdit,btnReport;
+    private Button btnAdd,btnMatch,btnReport;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
         btnAdd = (Button) findViewById(R.id.btnAdd);
-        btnEdit = (Button) findViewById(R.id.btnEdit);
+        btnMatch = (Button) findViewById(R.id.btnMatch);
         btnReport = (Button) findViewById(R.id.btnReport);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                Intent myIntent = new Intent(AdminActivity.this, AddMatchActivity.class);
+                startActivity(myIntent);
             }
         });
-        btnEdit.setOnClickListener(new View.OnClickListener() {
+        btnMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent myIntent = new Intent(AdminActivity.this, ViewMatchActivity.class);
+                startActivity(myIntent);
             }
         });
         btnReport.setOnClickListener(new View.OnClickListener() {
