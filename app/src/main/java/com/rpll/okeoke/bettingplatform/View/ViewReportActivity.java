@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -41,8 +42,9 @@ public class ViewReportActivity extends AppCompatActivity {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                long totalchat = dataSnapshot.getChildrenCount();
-                for(int i=1;i<=totalchat;i++){
+                long totalreport = dataSnapshot.getChildrenCount();
+                Log.d("totalreport",Long.toString(totalreport));
+                for(int i=1;i<=totalreport;i++){
                     Report report = new Report();
                     report.setCategory(dataSnapshot.child(Integer.toString(i)).child("content").getValue(String.class));
                     report.setDate(dataSnapshot.child(Integer.toString(i)).child("date").getValue(String.class));

@@ -33,8 +33,10 @@
         android:background="@drawable/edittxt_bg"
         android:ems="10"
         android:paddingLeft="10dp"
+        android:textColor="#000"
+        android:fontFamily="@font/qanelas_semibold"
         android:inputType="none"
-        android:hint="Category" />
+        android:text="Category" />
 
     <EditText
         android:id="@+id/reportContent"
@@ -47,7 +49,9 @@
         android:layout_alignLeft="@+id/reportCategory"
         android:layout_marginTop="140dp"
         android:ems="10"
-        android:hint="Report Content"
+        android:text="Report Content"
+        android:textColor="#000"
+        android:fontFamily="@font/qanelas_semibold"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:gravity="left"

@@ -17,10 +17,10 @@ import java.util.ArrayList;
 
 public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder> {
 
-    private ArrayList<Report> mDataset;
+    private ArrayList<Report> dataset;
     private static Context context;
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
         // each data item is just a string in this case
         public TextView txtCategory;
         public TextView txtDate;
@@ -31,16 +31,16 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
             txtDate = itemView.findViewById(R.id.viewReportDate);
         }
 
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(context, ViewDetailReportActivity.class);
-            intent.putExtra("position", getAdapterPosition());
-            context.startActivity(intent);
-        }
+//        @Override
+//        public void onClick(View view) {
+//            Intent intent = new Intent(context, ViewDetailReportActivity.class);
+//            intent.putExtra("position", getAdapterPosition());
+//            context.startActivity(intent);
+//        }
     }
 
     public ReportAdapter(Context context, ArrayList<Report> mDataset) {
-        this.mDataset = mDataset;
+        dataset = mDataset;
         this.context = context;
     }
 
@@ -55,14 +55,23 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
 
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.txtCategory.setText(mDataset.get(position).getCategory());
-        holder.txtDate.setText(mDataset.get(position).getDate());
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+        holder.txtCategory.setText(dataset.get(position).getCategory());
+        holder.txtDate.setText(dataset.get(position).getDate());
+
+        holder.txtCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ViewDetailReportActivity.class);
+                intent.putExtra("position", Integer.toString(position+1));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return mDataset.size();
+        return dataset.size();
     }
 
 }

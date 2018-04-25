@@ -2,11 +2,15 @@ package com.rpll.okeoke.bettingplatform.View;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.rpll.okeoke.bettingplatform.Model.Report;
 import com.rpll.okeoke.bettingplatform.R;
 
@@ -17,7 +21,7 @@ public class ViewDetailReportActivity extends AppCompatActivity {
     EditText category, content;
     TextView sender, date;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef;
+    DatabaseReference myRef = database.getReference();
     String position;
 
     @Override
@@ -31,11 +35,21 @@ public class ViewDetailReportActivity extends AppCompatActivity {
         date = findViewById(R.id.reportDate);
 
         position = getIntent().getStringExtra("position");
-        myRef = database.getReference("Report").child(position);
-        category.setText(myRef.child("category").toString());
-        content.setText(myRef.child("content").toString());
-        sender.setText(myRef.child("email").toString());
-        date.setText(myRef.child("date").toString());
+        Log.d("posisi", position);
+        myRef.child("Report").child(position).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                category.setText(dataSnapshot.child("category").getValue(String.class));
+                content.setText(dataSnapshot.child("content").getValue(String.class));
+                sender.setText(dataSnapshot.child("email").getValue(String.class));
+                date.setText(dataSnapshot.child("date").getValue(String.class));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         category.setEnabled(false);
         content.setEnabled(false);
     }
