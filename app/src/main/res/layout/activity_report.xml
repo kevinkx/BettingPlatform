@@ -56,11 +56,18 @@
         android:id="@+id/submitReport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editreportContent"
+        android:layout_alignLeft="@+id/editreportContent"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignRight="@+id/editreportContent"
+        android:layout_alignStart="@+id/editreportContent"
         android:layout_marginBottom="58dp"
+        android:background="#000000"
+        android:fontFamily="@font/qanelas_semibold"
+        android:gravity="center_vertical|center"
         android:onClick="submitReport"
-        android:text="Submit Report" />
+        android:text="Submit Report"
+        android:textColor="#FFFFFF" />
 
 
 </RelativeLayout>

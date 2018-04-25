@@ -31,8 +31,8 @@
         android:layout_toEndOf="@+id/profilepic"
         android:layout_toRightOf="@+id/profilepic"
         android:paddingTop="5dp"
-        android:fontFamily="@font/qanelas_semibold"
         android:text="profile_detail"
+        android:fontFamily="@font/qanelas_semibold"
         android:textColor="#000000"
         android:textSize="16dp" />
 
