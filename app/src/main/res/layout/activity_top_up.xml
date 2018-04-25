@@ -11,26 +11,14 @@
         android:id="@+id/txtProfile"
         android:layout_width="169dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/spinner"
-        android:layout_alignStart="@+id/spinner"
-        android:layout_alignTop="@+id/profilepic"
+        android:layout_alignBottom="@+id/divider"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="59dp"
         android:fontFamily="@font/qanelas_semibold"
         android:paddingTop="5dp"
         android:text="profile_detail"
         android:textColor="#000000"
         android:textSize="16dp" />
-
-    <ImageView
-        android:id="@+id/profilepic"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="41dp"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="40dp"
-        android:src="@android:drawable/sym_def_app_icon" />
 
     <View
         android:id="@+id/divider"
@@ -49,6 +37,8 @@
         android:layout_alignEnd="@+id/profilepic"
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/profilepic"
+        android:textColor="#000000"
+        android:fontFamily="@font/qanelas_semibold"
         android:layout_marginTop="211dp"
         android:text="Amount" />
 
@@ -70,6 +60,8 @@
         android:layout_alignLeft="@+id/textAmount"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/textAmount"
+        android:textColor="#000000"
+        android:fontFamily="@font/qanelas_semibold"
         android:layout_marginBottom="203dp"
         android:text="Payment Method" />
 
@@ -86,6 +78,8 @@
         android:id="@+id/btnSubmitTop"
         android:layout_width="116dp"
         android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:fontFamily="@font/qanelas_semibold"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="116dp"
