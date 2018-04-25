@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,8 +7,25 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/txtStats"
+        android:layout_width="match_parent"
+        android:layout_height="400px"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        android:fontFamily="@font/qanelas_semibold"
+        android:gravity="center"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="bet_status" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/viewBet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="HISTORY FRAGMENT" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="400px" />
 
-</FrameLayout>
+</RelativeLayout>

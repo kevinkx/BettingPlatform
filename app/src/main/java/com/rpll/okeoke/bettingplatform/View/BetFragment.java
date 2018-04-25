@@ -98,7 +98,14 @@ public class BetFragment extends Fragment {
                     match.setTeam_2(dataSnapshot.child(Integer.toString(i)).child("team_2").getValue(String.class));
                     match.setId_match(dataSnapshot.child(Integer.toString(i)).child("idmatch").getValue(String.class));
                     match.setStatus(dataSnapshot.child(Integer.toString(i)).child("status").getValue(String.class));
-                    matches.add(match);
+                    if(match.getStatus().equalsIgnoreCase("LIVE"))
+                    {
+                        matches.add(0,match);
+                    }
+                    else if(match.getStatus().equalsIgnoreCase("Waiting"))
+                    {
+                        matches.add(match);
+                    }
                 }
                 mAdapter = new BetAdapter(matches, getContext());
                 mRecyclerView.setAdapter(mAdapter);
