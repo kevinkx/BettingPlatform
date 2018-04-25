@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context="com.rpll.okeoke.bettingplatform.View.RegisterActivity">
+    tools:context="com.rpll.okeoke.bettingplatform.Controller.RegisterActivity">
 
     <EditText
         android:id="@+id/fullname"

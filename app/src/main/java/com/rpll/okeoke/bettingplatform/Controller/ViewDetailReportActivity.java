@@ -1,4 +1,4 @@
-package com.rpll.okeoke.bettingplatform.View;
+package com.rpll.okeoke.bettingplatform.Controller;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,10 +11,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.rpll.okeoke.bettingplatform.Model.Report;
 import com.rpll.okeoke.bettingplatform.R;
-
-import org.w3c.dom.Text;
 
 public class ViewDetailReportActivity extends AppCompatActivity {
 

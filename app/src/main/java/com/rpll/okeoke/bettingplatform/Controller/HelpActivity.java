@@ -1,18 +1,11 @@
-package com.rpll.okeoke.bettingplatform.View;
+package com.rpll.okeoke.bettingplatform.Controller;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.rpll.okeoke.bettingplatform.R;
-
-import java.lang.reflect.Array;
 
 public class HelpActivity extends AppCompatActivity {
 

@@ -9,18 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.MainActivity" />
+        <activity android:name=".Controller.MainActivity" />
         <activity
-            android:name=".View.RegisterActivity"
+            android:name=".Controller.RegisterActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".View.FirstActivity" />
+        <activity android:name=".Controller.FirstActivity" />
         <activity
-            android:name=".View.LoginActivity"
+            android:name=".Controller.LoginActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".View.ChatActivity"
+            android:name=".Controller.ChatActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".View.LoadingActivity">
+        <activity android:name=".Controller.LoadingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,23 +28,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".View.HomeActivity"
+            android:name=".Controller.HomeActivity"
             android:label="@string/title_activity_home" />
-        <activity android:name=".View.TopUpActivity" />
-        <activity android:name=".View.EditProfileActivity" />
+        <activity android:name=".Controller.TopUpActivity" />
+        <activity android:name=".Controller.EditProfileActivity" />
         <!-- <activity android:name=".View.popup_topup"></activity> -->
-        <activity android:name=".View.WithdrawActivity" />
-        <activity android:name=".View.BetDetailActivity" />
-        <activity android:name=".View.AboutActivity" />
-        <activity android:name=".View.ReportActivity" />
-        <activity android:name=".View.HelpActivity" />
-        <activity android:name=".View.AdminActivity" />
+        <activity android:name=".Controller.WithdrawActivity" />
+        <activity android:name=".Controller.BetDetailActivity" />
+        <activity android:name=".Controller.AboutActivity" />
+        <activity android:name=".Controller.ReportActivity" />
+        <activity android:name=".Controller.HelpActivity" />
+        <activity android:name=".Controller.AdminActivity" />
 
-        <activity android:name=".View.AddMatchActivity" />
-        <activity android:name=".View.ViewMatchActivity"></activity>
-        <activity android:name=".View.ViewReportActivity" />
-        <activity android:name=".View.ViewDetailReportActivity" />
-        <activity android:name=".View.EditMatchActivity"></activity>
+        <activity android:name=".Controller.AddMatchActivity" />
+        <activity android:name=".Controller.ViewMatchActivity"></activity>
+        <activity android:name=".Controller.ViewReportActivity" />
+        <activity android:name=".Controller.ViewDetailReportActivity" />
+        <activity android:name=".Controller.EditMatchActivity"></activity>
     </application>
 
 </manifest>

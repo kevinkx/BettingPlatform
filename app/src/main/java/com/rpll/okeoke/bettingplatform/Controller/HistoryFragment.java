@@ -1,4 +1,4 @@
-package com.rpll.okeoke.bettingplatform.View;
+package com.rpll.okeoke.bettingplatform.Controller;
 
 import android.content.Context;
 import android.net.Uri;

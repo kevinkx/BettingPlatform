@@ -1,6 +1,5 @@
-package com.rpll.okeoke.bettingplatform.View;
+package com.rpll.okeoke.bettingplatform.Controller;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,7 +10,6 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,13 +20,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rpll.okeoke.bettingplatform.Model.Betting;
-import com.rpll.okeoke.bettingplatform.Model.Match;
 import com.rpll.okeoke.bettingplatform.Model.User;
 import com.rpll.okeoke.bettingplatform.R;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.ArrayList;
 
 public class BetDetailActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener{
     public static String BID;

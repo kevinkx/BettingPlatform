@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="#000000"
     android:layout_height="match_parent"
-    tools:context="com.rpll.okeoke.bettingplatform.View.LoadingActivity">
+    tools:context="com.rpll.okeoke.bettingplatform.Controller.LoadingActivity">
 
     <ImageView
         android:id="@+id/imageView"

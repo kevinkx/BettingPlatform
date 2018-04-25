@@ -11,8 +11,7 @@ import android.widget.TextView;
 
 import com.rpll.okeoke.bettingplatform.Model.Match;
 import com.rpll.okeoke.bettingplatform.R;
-import com.rpll.okeoke.bettingplatform.View.BetDetailActivity;
-import com.rpll.okeoke.bettingplatform.View.EditMatchActivity;
+import com.rpll.okeoke.bettingplatform.Controller.EditMatchActivity;
 
 import java.util.ArrayList;
 

@@ -1,8 +1,6 @@
-package com.rpll.okeoke.bettingplatform.View;
+package com.rpll.okeoke.bettingplatform.Controller;
 
 import android.net.Uri;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,7 +10,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.rpll.okeoke.bettingplatform.R;

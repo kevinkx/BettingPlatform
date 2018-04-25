@@ -1,4 +1,4 @@
-package com.rpll.okeoke.bettingplatform.View;
+package com.rpll.okeoke.bettingplatform.Controller;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

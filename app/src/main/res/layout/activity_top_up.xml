@@ -5,7 +5,7 @@
     android:id="@+id/topupactivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.TopUpActivity">
+    tools:context=".Controller.TopUpActivity">
 
     <TextView
         android:id="@+id/txtProfile"

@@ -1,4 +1,4 @@
-package com.rpll.okeoke.bettingplatform.View;
+package com.rpll.okeoke.bettingplatform.Controller;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +19,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.rpll.okeoke.bettingplatform.Model.Livechat;
 import com.rpll.okeoke.bettingplatform.Model.User;
 import com.rpll.okeoke.bettingplatform.R;
 

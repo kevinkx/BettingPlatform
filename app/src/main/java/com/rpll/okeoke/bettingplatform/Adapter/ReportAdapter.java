@@ -10,8 +10,7 @@ import android.widget.TextView;
 
 import com.rpll.okeoke.bettingplatform.Model.Report;
 import com.rpll.okeoke.bettingplatform.R;
-import com.rpll.okeoke.bettingplatform.View.ViewDetailReportActivity;
-import com.rpll.okeoke.bettingplatform.View.ViewReportActivity;
+import com.rpll.okeoke.bettingplatform.Controller.ViewDetailReportActivity;
 
 import java.util.ArrayList;
 
