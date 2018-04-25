@@ -21,11 +21,7 @@
             android:name=".View.ChatActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".View.LoadingActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".View.HomeActivity"
@@ -38,6 +34,18 @@
         <activity android:name=".View.AboutActivity" />
         <activity android:name=".View.ReportActivity" />
         <activity android:name=".View.HelpActivity" />
+        <activity android:name=".View.AdminActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".View.AddMatchActivity" />
+        <activity android:name=".View.ViewMatchActivity">
+
+        </activity>
+
         <activity android:name=".View.ViewReportActivity" />
         <activity android:name=".View.ViewDetailReportActivity"></activity>
     </application>

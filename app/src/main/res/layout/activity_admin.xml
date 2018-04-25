@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context="com.rpll.okeoke.bettingplatform.View.AdminActivity">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="62dp"
+        android:fontFamily="@font/qanelas_semibold"
+        android:text="Welcome, Administrator :)"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        tools:layout_editor_absoluteX="89dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView9"
+        android:layout_marginTop="56dp"
+        android:text="Add Match" />
+
+    <Button
+        android:id="@+id/btnEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnAdd"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="Edit Match" />
+
+    <Button
+        android:id="@+id/btnReport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnEdit"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="View Report" />
+
+</RelativeLayout>
