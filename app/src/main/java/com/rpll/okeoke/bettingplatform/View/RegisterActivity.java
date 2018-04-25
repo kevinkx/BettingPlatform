@@ -106,7 +106,16 @@ public class RegisterActivity extends AppCompatActivity {
                                         }
 
                                     });
-                                    startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
+                                    if(email.equalsIgnoreCase("admin@bettingplatform.com"))
+                                    {
+
+                                        startActivity(new Intent(RegisterActivity.this, AdminActivity.class));
+                                    }
+                                    else
+                                    {
+
+                                        startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
+                                    }
                                     finish();
                                 }
                             }

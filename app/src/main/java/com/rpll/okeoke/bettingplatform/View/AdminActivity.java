@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.rpll.okeoke.bettingplatform.R;
 
 public class AdminActivity extends AppCompatActivity {
-    private Button btnAdd,btnMatch,btnReport;
+    private Button btnAdd,btnMatch,btnReport, btnLogout;
     private FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,7 @@ public class AdminActivity extends AppCompatActivity {
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnMatch = (Button) findViewById(R.id.btnMatch);
         btnReport = (Button) findViewById(R.id.btnReport);
+        btnLogout = (Button) findViewById(R.id.btnLogout);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,18 +44,13 @@ public class AdminActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if(id== R.id.action_logout)
-        {
-            auth.signOut();
-            startActivity(new Intent(AdminActivity.this, FirstActivity.class));
-            finish();
-        }
-
-        return super.onOptionsItemSelected(item);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                auth.signOut();
+                startActivity(new Intent(AdminActivity.this, FirstActivity.class));
+                finish();
+            }
+        });
     }
 }

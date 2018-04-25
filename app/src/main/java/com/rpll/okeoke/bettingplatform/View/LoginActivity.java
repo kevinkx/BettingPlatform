@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = inputEmail.getText().toString();
+                final String email = inputEmail.getText().toString();
                 final String password = inputPassword.getText().toString();
 
                 if (TextUtils.isEmpty(email)) {
@@ -70,7 +70,16 @@ public class LoginActivity extends AppCompatActivity {
                                         Toast.makeText(LoginActivity.this, "Authentication Failed!", Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                    if(email.equalsIgnoreCase("admin@bettingplatform.com"))
+                                    {
+
+                                        startActivity(new Intent(LoginActivity.this, AdminActivity.class));
+                                    }
+                                    else
+                                    {
+
+                                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                    }
                                     finish();
                                 }
                             }
